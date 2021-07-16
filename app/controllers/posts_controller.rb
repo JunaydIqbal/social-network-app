@@ -5,11 +5,11 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destory, :new]
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.order('publish_at DESC')
   end
 
   def my_post
-    @posts = Post.all
+    @posts = Post.order('publish_at DESC')
     
   end
 
