@@ -9,8 +9,8 @@
   <strong>Content:</strong>
   <%= @post.content %>
 </p>
-<%username = current_user.email.split("@")%>
-<% if @post.name == username[0] %>
+
+<%if can? :update, @post%>
   <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-secondary" %> |
 <%end%>
 <%= link_to 'Back', posts_path, class: "btn btn-secondary" %>
