@@ -9,8 +9,11 @@ class PostsController < ApplicationController
   end
 
   def my_post
-    @posts = Post.order('publish_at DESC')
-    
+    #@posts = Post.order('publish_at DESC')
+
+    #user = current_user.posts.find_by(id: params[:id])
+    user = User.find(current_user.id)
+    @posts = user.posts.order('publish_at DESC')
   end
 
   # GET /posts/1 or /posts/1.json
@@ -29,10 +32,10 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
-    username = current_user.email.split("@")
+    # username = current_user.email.split("@")
     respond_to do |format|
-      @post.name = username[0]
-      @post.publish_at = DateTime.now
+      @post.name = current_user.username
+      #@post.publish_at = DateTime.now
       if @post.save
         format.html { redirect_to @post, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
@@ -74,7 +77,7 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       
-      params.require(:post).permit(:name, :title, :content)
+      params.require(:post).permit(:name, :title, :content, :user_id)
     end
 
     # def require_user
