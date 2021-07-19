@@ -4,3 +4,4 @@ class ApplicationController < ActionController::Base
     redirect_to posts_path, :alert => exception.message
   end
 end
+

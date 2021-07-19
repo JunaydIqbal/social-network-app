@@ -50,7 +50,7 @@
           
 
           <p class="card-text">
-              <%= post.content %>
+              <%= truncate(post.content, :length => 30, :omission => '... (continued)') %>
           </p>
       </div>
       <div class="card-footer">
