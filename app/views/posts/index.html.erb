@@ -26,11 +26,15 @@
                         <div class="h6 dropdown-header"></div>
                         <%= link_to 'Show', post, class: "dropdown-item" %>
                         <% if user_signed_in?%>
-                            <%username = current_user.email.split("@")%>
-                            <% if post.name == username[0] %>
+                            
+                        
+                            <%if can? :update, post%>
                                 <%= link_to 'Edit', edit_post_path(post), class: "dropdown-item" %>
+                            <%end%>
+                            <%if can? :destroy, post%>
                                 <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %>
                             <%end%>
+                        
                         <%end%>
                     </div>
                 </div>

@@ -18,6 +18,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    authorize! :update, @post
   end
 
   # GET /posts/new
@@ -27,6 +28,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    authorize! :update, @post
   end
 
   # POST /posts or /posts.json
