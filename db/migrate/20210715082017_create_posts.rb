@@ -6,7 +6,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.text :content
       #t.datetime :publish_at
       
-      #t.remove :publish_at
+      t.remove :publish_at
       t.timestamps
     end
     add_column :posts, :published, :boolean, :default => false
