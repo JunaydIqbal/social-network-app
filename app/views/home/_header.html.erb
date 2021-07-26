@@ -12,17 +12,16 @@
           <%= link_to "About Us", "#", class: "nav-link"%>
           
         </li>
-        <li class="nav-item">
-          <%= link_to "Feed", posts_path, class: "nav-link"%>
-          
-        </li>
+        
        
         
         
         <% if user_signed_in?%>
           <li class="nav-item">
+            <%= link_to "Feed", posts_path, class: "nav-link"%>
+          </li>
+          <li class="nav-item">
             <%= link_to "My Posts", my_post_path, class: "nav-link"%>
-          
           </li>
           <li class="nav-item">
             <%= link_to "Create Post", new_post_path, class: "nav-link"%>

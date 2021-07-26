@@ -6,16 +6,15 @@ class Ability
   def initialize(user)
     # if user.admin?
     #   can :manage, :all
-    if
+    if user.present?
       can :create, Post
-      
-      can :update, Post do |post|
-        post.user == user
-      end
 
-      can :destroy, Post do |post|
-        post.user == user
-      end
+      can :show, Post
+      
+      can :update, Post, user_id: user.id
+      
+
+      can :destroy, Post, user_id: user.id
 
     end
     # Define abilities for the passed in user here. For example:

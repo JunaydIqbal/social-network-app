@@ -7,4 +7,7 @@ class Post < ApplicationRecord
   validates :content, presence: true
   validates :content, length: {maximum: 1500}, allow_blank: false
 
+
+  Post.where('posts.user_id NOT IN (?)', User.pluck(:id)).delete_all
+
 end

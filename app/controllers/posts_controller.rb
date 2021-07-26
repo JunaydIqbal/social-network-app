@@ -2,7 +2,7 @@ require 'date'
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
-  before_action :authenticate_user!, only: [:edit, :update, :destory, :new]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :index]
   # GET /posts or /posts.json
   def index
     @posts = Post.order('publish_at DESC')
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
-    #authorize! :update, @post
+    authorize! :show, @post
   end
 
   # GET /posts/new

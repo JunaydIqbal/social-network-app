@@ -10,11 +10,13 @@ class User < ApplicationRecord
 
   validates :username, format: { without: /\s/ }
   validates :username,  presence: true, length: { maximum: 15 }
-  validate :username_uniqueness
+  #validate :username_uniqueness
+  validates_presence_of     :username
+  validates_uniqueness_of   :username 
 
-  def username_uniqueness
-    self.errors.add(:base, 'User with same username already exists. Please try with another username.') if User.where(:username => self.username).exists?
-  end
+  # def username_uniqueness
+  #   self.errors.add(:base, 'User with same username already exists. Please try with another username.') if User.where(:username => self.username).exists?
+  # end
 
   def self.find_for_database_authentication warden_condition
     conditions = warden_condition.dup
