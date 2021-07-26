@@ -9,7 +9,20 @@ class Ability
     if user.present?
       can :create, Post
 
-      can :show, Post
+      #can :show, Post #[:published]
+
+      # if true
+      #   can :show, Post, user_id: user.id, :published => false
+      # else
+      #   can :show, Post, :published => false
+      # end
+      can :show, Post do |s|
+        s.user_id == user.id || s.published == false
+      end
+
+      #can :show, Post, [published: false, user_id: user.id]
+
+      #can :show, Post, :except => [:published], user_id: user.id
       
       can :update, Post, user_id: user.id
       
@@ -17,6 +30,10 @@ class Ability
       can :destroy, Post, user_id: user.id
 
     end
+
+   
+
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

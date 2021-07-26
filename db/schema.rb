@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 2021_07_16_115429) do
     t.string "name"
     t.string "title"
     t.text "content"
-    t.datetime "publish_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "published", default: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end

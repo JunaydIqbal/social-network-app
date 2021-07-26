@@ -5,7 +5,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :index]
   # GET /posts or /posts.json
   def index
-    @posts = Post.order('publish_at DESC')
+    
+    @posts = Post.order('created_at DESC')
   end
 
   def my_post
@@ -13,11 +14,12 @@ class PostsController < ApplicationController
 
     #user = current_user.posts.find_by(id: params[:id])
     user = User.find(current_user.id)
-    @posts = user.posts.order('publish_at DESC')
+    @posts = user.posts.order('created_at DESC')
   end
 
   # GET /posts/1 or /posts/1.json
   def show
+
     authorize! :show, @post
   end
 
@@ -79,7 +81,7 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       
-      params.require(:post).permit(:name, :title, :content, :user_id)
+      params.require(:post).permit(:name, :title, :content, :published, :user_id)
     end
 
     # def require_user
