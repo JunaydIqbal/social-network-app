@@ -7,19 +7,12 @@ local:
   root: <%= Rails.root.join("storage") %>
 
 
-amazon:
-  service: S3
-  access_key_id: "AKIATNKV4STXNXBX64XP"
-  secret_access_key: "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"
-  region: "eu-west-2"
-  bucket: "socionet-app"
-
 # amazon:
 #   service: S3
-#   access_key_id: "AKIATNKV4STXNXBX64XP"
-#   secret_access_key: "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"
-#   region: "EU (London) eu-west-2"
-#   bucket: "socionet-app"
+#   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+#   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
+#   region: us-east-1
+#   bucket: your_own_bucket
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
