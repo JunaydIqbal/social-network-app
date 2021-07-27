@@ -11,7 +11,7 @@ s3:
   service: S3
   access_key_id: "AKIATNKV4STXNXBX64XP"
   secret_access_key: "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"
-  region: "EU (London) eu-west-2"
+  region: "eu-west-2"
   bucket: "socionet-app"
 
 # amazon:
