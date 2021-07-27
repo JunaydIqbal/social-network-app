@@ -50,6 +50,11 @@
         <p class="card-text">
             <%= truncate(post.content,:length => 50, :omission => '... (continued)') %>
         </p>
+        <p class="card-text">
+            <%(0...post.images.count).each do |img|%>
+                <%= image_tag(post.images[img], style: "width: 200px; height: auto;")%>
+            <%end%>
+        </p>
     </div>
     <div class="card-footer">
         <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>

@@ -12,6 +12,8 @@ module SocialNetworkApp
     config.load_defaults 6.1
 
     config.time_zone = 'Asia/Karachi'
+    
+    config.active_storage.variant_processor = :vips
 
     # Configuration for the application, engines, and railties goes here.
     #

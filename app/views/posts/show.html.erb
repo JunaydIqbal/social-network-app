@@ -10,6 +10,14 @@
   <%= @post.content %>
 </p>
 
+<p>
+  <%(0...@post.images.count).each do |img|%>
+  
+    <%= image_tag(@post.images[img], style: "width: 150px; height: auto;")%>
+  
+  <%end%>
+</p>
+
 <%if can? :update, @post%>
   <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-secondary" %> |
 <%end%>
