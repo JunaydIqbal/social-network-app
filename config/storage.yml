@@ -7,7 +7,7 @@ local:
   root: <%= Rails.root.join("storage") %>
 
 
-s3:
+amazon:
   service: S3
   access_key_id: "AKIATNKV4STXNXBX64XP"
   secret_access_key: "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"
