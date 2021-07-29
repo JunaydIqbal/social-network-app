@@ -27,6 +27,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   #DELETE /resource
   def destroy
+    delete_user_posts
     super
   end
 
@@ -61,4 +62,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_inactive_sign_up_path_for(resource)
     root_path
   end
+
+  private
+    
+    def delete_user_posts
+      @user.posts.destroy_all
+    end
+  
 end

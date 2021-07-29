@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :username, format: { without: /\s/ }
   validates :username,  presence: true, length: { maximum: 15 }
   #validate :username_uniqueness
-  validates_presence_of     :username
+  #validates_presence_of     :username
   validates_uniqueness_of   :username 
 
   # def username_uniqueness
