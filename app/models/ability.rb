@@ -17,7 +17,7 @@ class Ability
       #   can :show, Post, :published => false
       # end
       can :show, Post do |s|
-        s.user_id == user.id || s.published == false
+        s.user_id == user.id || s.published == false && user.check_friend?(s.user_id)
       end
 
       #can :show, Post, [published: false, user_id: user.id]

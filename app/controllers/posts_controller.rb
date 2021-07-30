@@ -4,8 +4,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :index]
   # GET /posts or /posts.json
   def index
-    
-    @posts = Post.order('created_at DESC')
+    ids = current_user.friends.pluck(:id) << current_user.id
+    @posts = Post.where(user_id: ids).order('created_at DESC')
   end
 
   def my_post

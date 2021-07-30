@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  
+  resources :friendships
+  get "remove_friend" => "friendships#destroy"
+
   resources :posts
   get "my_post", to: "posts#my_post"
   #devise_for :users
