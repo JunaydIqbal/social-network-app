@@ -57,10 +57,23 @@
                 <%end%>
             </p>
         <%end%>
+
+        <% for post_thread in post.post_threads %>
+            <br>
+
+            <div class="card text-white bg-dark mb-3" style="max-width: 100rem;">
+                <div class="card-body">
+                    
+                    <%= truncate(post_thread.content, :length => 50, :omission => '... (continued)', class: "card-text") %>
+                    
+                </div>
+            </div>
+        
+        <%end%>
     </div>
     <div class="card-footer">
         <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-        <a href="#" class="card-link"><i class="fa fa-comment"></i> Thread</a>
+        <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
     </div>
     </div>
     

@@ -48,6 +48,10 @@
             <div style="display: inline-block;" class="text-muted "> | </div> 
             <div style="display: inline-block;" class="text-muted h7 mb-2" title="Public Post"> <i class="fa fa-globe"></i></div>
 
+            <% if post.created_at != post.updated_at %>
+                <div style="display: inline-block;" class="text-muted "> | </div> 
+                <div style="display: inline-block;" class="text-muted h7 mb-2"> Edited</div>
+            <%end%>
             
             <h5 class="card-title"><%= post.title %></h5>
             
@@ -63,15 +67,30 @@
                     <%end%>
                 </p>
             <%end%>
-           
+
+
+            <% for post_thread in post.post_threads %>
+                <br>
+
+                <div class="card text-white bg-dark mb-3" style="max-width: 100rem;">
+                    <div class="card-body">
+                        
+                        <%= truncate(post_thread.content, :length => 50, :omission => '... (continued)', class: "card-text") %>
+                        
+                    </div>
+                </div>
+            
+            <%end%>
 
         </div>
         <div class="card-footer">
             <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-            <a href="#" class="card-link"><i class="fa fa-comment"></i> Thread</a>
+            <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
         </div>
         </div>
     <%end%>
   <%end%>
 
 <br>
+
+
