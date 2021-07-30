@@ -2,6 +2,8 @@ class Post < ApplicationRecord
 
   belongs_to :user
   has_many_attached :images
+  has_many :post_threads, dependent: :destroy
+  accepts_nested_attributes_for :post_threads, reject_if: :all_blank, allow_destroy: true
 
   validates :title, presence: true
   validates :title, length: {maximum: 50}, allow_blank: false

@@ -36,8 +36,16 @@
           <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
               <div class="form-group">
                     <div class="form-group">
+                      
                       <%= form.text_field :title, placeholder: "Subject of your post", class: "form-control", required: true%><br>
                       <%= form.text_area :content, id: "message", rows: 3, class: "form-control", placeholder: "What are you thinking?", required: true %>
+                      <%= form.fields_for :post_threads do |p_thread| %>
+                        <%= render 'post_threads_fields', f: p_thread %>
+                        
+                      <%end%>
+                      
+                      
+                      
                       <%= form.number_field :user_id, id: :post_user_id, class: "form-control", value: current_user.id, type: :hidden%>
                     </div>
                     
@@ -57,6 +65,14 @@
                         
                         
                     </div>
+
+                    <br>
+                    <div class="links">
+                      
+                      <%= link_to_add_association "Add Thread", form, :post_threads, partial: 'post_threads_fields', class: "btn btn-primary" %>
+                    </div>
+
+                    
                     
 
               </div>
@@ -70,9 +86,7 @@
       
       <div class="btn-toolbar justify-content-between">
           <div class="btn-group">
-              <div class= "btn">
-               
-              </div>
+              
           </div>
           <div class="btn-group">
             <table summary="form fields">
@@ -87,6 +101,7 @@
             -->
               
           </div>
+          
       </div>
       <%= form.submit %>
   </div>

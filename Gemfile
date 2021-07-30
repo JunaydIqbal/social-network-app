@@ -29,6 +29,8 @@ gem 'image_processing'
 gem 'aws-sdk-s3'
 
 gem "figaro"
+
+gem "cocoon"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

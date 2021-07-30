@@ -1,0 +1,13 @@
+<br>
+
+<div class="nested-fields">
+  <div class="field">
+    <ol class = "num-ol">
+      <li class = "num-li">
+        <%= f.text_area :content, id: "message", rows: 3, class: "form-control", placeholder: "Write your thread!", required: true %>
+        <%= link_to_remove_association "Remove", f %>
+      </li>
+    </ol>
+  </div>
+</div>
+

@@ -19,3 +19,22 @@
   }
 }
 
+
+
+.num-ol {
+  counter-reset: item;
+  margin-left: 0;
+  padding-left: 0;
+}
+.num-li {
+  display: block;
+  margin-bottom: .5em;
+  margin-left: 2em;
+}
+.num-li::before {
+  display: inline-block;
+  content: "Th: " counter(item);
+  counter-increment: item;
+  width: 3em;
+  margin-left: -2em;
+}
