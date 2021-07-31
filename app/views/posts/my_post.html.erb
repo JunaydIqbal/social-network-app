@@ -72,7 +72,16 @@
         <%end%>
     </div>
     <div class="card-footer">
-        <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+        <!-- <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>  -->
+        <div id="<%= "like-count-" + post.id.to_s %>">
+            <%= render 'posts/likes', post: post%>
+        </div>
+        <div id="<%= "like-link-" + post.id.to_s %>" style="display: inline-block;"> 
+            <%= render 'posts/like_link', post: post %>
+        </div>
+        
+        &#160;&#160;&#160;
+        
         <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
     </div>
     </div>

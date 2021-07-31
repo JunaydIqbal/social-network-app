@@ -1,0 +1,6 @@
+
+
+$('#like-count-<%=@post.id%>').html('<%= j render partial: "posts/likes", locals: {post: @post} %>');
+
+
+$('#like-link-<%=@post.id%>').html('<%= j render partial: "posts/like_link", locals: {post: @post} %>');

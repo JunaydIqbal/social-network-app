@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_post, only: %i[ show edit update destroy like]
 
-  before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :index]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :index, :like]
+  #respond_to :js, :json, :html
+
   # GET /posts or /posts.json
   def index
     ids = current_user.friends.pluck(:id) << current_user.id
@@ -70,6 +72,16 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def like
+    if current_user.voted_for? @post
+      @post.unliked_by current_user
+    else
+      @post.liked_by current_user
+    end
+    
+    #format.json { render :like, status: :ok, location: @post }
   end
 
   private

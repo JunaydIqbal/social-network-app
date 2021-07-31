@@ -5,6 +5,8 @@ class Post < ApplicationRecord
   has_many :post_threads, dependent: :destroy
   accepts_nested_attributes_for :post_threads, reject_if: :all_blank, allow_destroy: true
 
+  acts_as_votable
+
   validates :title, presence: true
   validates :title, length: {maximum: 50}, allow_blank: false
   validates :content, presence: true

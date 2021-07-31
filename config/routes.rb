@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   resources :friendships
   get "remove_friend" => "friendships#destroy"
 
-  resources :posts
+  resources :posts do
+    member do
+      put "like" => "posts#like"
+    end
+  end
+  
   get "my_post", to: "posts#my_post"
   #devise_for :users
   devise_for :users, :controllers => {

@@ -1,0 +1,3 @@
+<% vote_text = current_user&.voted_for?(post) ? " Unlike" : " Like" %>
+
+<%= link_to vote_text, like_post_path(post), method: :put, remote: :true, class: 'fa fa-gittip like-post-#{post.id}' %>

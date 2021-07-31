@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships      #show friends   #means>>  friendship ==> friend && friendships ==> friends
 
   has_many :friends_posts, through: :friends, source: :posts
+
+  acts_as_voter
   
   attr_accessor :login
   
