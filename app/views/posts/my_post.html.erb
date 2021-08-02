@@ -72,8 +72,9 @@
         <%end%>
     </div>
     <div class="card-footer">
+        <% post_likes = post.votes_for.up.by_type(User).voters %>
         <!-- <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>  -->
-        <div id="<%= "like-count-" + post.id.to_s %>">
+        <div id="<%= "like-count-" + post.id.to_s %>" title="<%= post_likes.map{|u| u.username}.join("\n")%>">
             <%= render 'posts/likes', post: post%>
         </div>
         <div id="<%= "like-link-" + post.id.to_s %>" style="display: inline-block;"> 
