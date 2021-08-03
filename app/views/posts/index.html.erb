@@ -96,13 +96,25 @@
            
             &#160;&#160;&#160;
             
-            <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+            <div class="card-link fa fa-comment">
+                <%= render 'comments/comments', post: post%>
+            </div>
+            <%= render partial: 'comments/form', locals: {comment: Comment.new, commentable: post} %>
+            
+            <br><br>
+            
+            
+            <%= turbo_stream_from post, :comments%>
+            <%= render post.comments%>
+        
+            
+            
+            
         </div>
-        </div>
+      </div>
     <%end%>
   <%end%>
 
 <br>
-
 
 

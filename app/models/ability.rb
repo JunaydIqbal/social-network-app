@@ -18,7 +18,14 @@ class Ability
       # end
       can :show, Post do |s|
         s.user_id == user.id || s.published == false && user.check_friend?(s.user_id)
+        
       end
+
+      can :update, Comment, user_id: user.id
+      can :destroy, Comment, user_id: user.id
+      can :manage, Comment, user_id: user.id
+      #can :destroy, Comment, parent_id: user.id
+      
 
       #can :show, Post, [published: false, user_id: user.id]
 

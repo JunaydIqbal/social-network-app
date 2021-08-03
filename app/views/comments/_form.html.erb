@@ -1,0 +1,16 @@
+<% model = [local_assigns[:commentable], comment].compact%>
+<%= form_with model: model, id: dom_id_for_records(*model) do |form| %>
+  <% if form.object.errors.any? %>
+    <div class="alert alert-danger">
+      <% form.object.errors.full_messages.each do |msg| %>
+        <div><%= msg %></div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= form.rich_text_area :body, placeholder: "Write some comment"%>
+  <br>
+  <%= form.submit class: "btn btn-secondary float-right" %>
+  <br>
+  <%= link_to "Cancel", comment, class: "btn btn-link" if form.object.persisted? %>
+<%end%>

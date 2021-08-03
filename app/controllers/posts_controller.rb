@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy like]
-
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :index, :like]
+  
   #respond_to :js, :json, :html
 
   # GET /posts or /posts.json
@@ -22,6 +22,8 @@ class PostsController < ApplicationController
   def show
 
     authorize! :show, @post
+    # @comment = Comment.new
+    # @comments = @post.comments
   end
 
   # GET /posts/new

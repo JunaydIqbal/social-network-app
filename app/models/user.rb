@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :friends_posts, through: :friends, source: :posts
 
   acts_as_voter
+
+  has_many :comments
   
   attr_accessor :login
   
