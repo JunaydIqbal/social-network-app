@@ -13,7 +13,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
     
   end
 
-  def def down 
+  def down 
     drop_table :posts
   end
 end

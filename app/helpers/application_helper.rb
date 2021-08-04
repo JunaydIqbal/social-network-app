@@ -9,8 +9,6 @@ module ApplicationHelper
   def broadcast_append_to(*streamables, target: broadcast_target_default, **rendering)
     Turbo::StreamsChannel.broadcast_append_to *streamables, target: target, **broadcast_rendering_with_defaults(rendering)
   end
-
-  
   
 end
 

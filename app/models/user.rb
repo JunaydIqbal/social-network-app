@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+
+         
   has_many :posts
   has_many :friendships, dependent: :destroy        # means>>  me ==> friendships   
   has_many :friends, through: :friendships      #show friends   #means>>  friendship ==> friend && friendships ==> friends
@@ -12,9 +17,6 @@ class User < ApplicationRecord
   has_many :comments
   
   attr_accessor :login
-  
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
 
 
   validates :username, format: { without: /\s/ }

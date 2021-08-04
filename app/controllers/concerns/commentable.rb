@@ -10,6 +10,7 @@ module Commentable
   def create
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
+
     
     respond_to do |format|
       if @comment.save
@@ -23,8 +24,9 @@ module Commentable
         format.turbo_stream {
           render turbo_stream: turbo_stream.replace(dom_id_for_records(@commentable, @comment), partial: "comments/form", locals: {comment: @comment, commentable: @commentable}) 
         }
-        format.html {redirect_to @commentable}
+        
       end
+      format.html {redirect_to @comment}
   # end
     end
   end
