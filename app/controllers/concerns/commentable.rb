@@ -10,9 +10,7 @@ module Commentable
   def create
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
-    #@comment.save
-    #redirect_to @comment
-    # redirect_to posts_path
+    
     respond_to do |format|
       if @comment.save
         
