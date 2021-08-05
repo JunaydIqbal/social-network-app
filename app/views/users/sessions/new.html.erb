@@ -2,15 +2,14 @@
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  
   <div class="field">
     <%= f.label :label_msg %><br />
-    <%= f.text_field :login, autofocus: true, autocomplete: "email" %>
+    <%= f.text_field :login, autofocus: true, autocomplete: "email", required: true %>
   </div>
 
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.password_field :password, autocomplete: "current-password", required: true %>
   </div>
 
   <% if devise_mapping.rememberable? %>
@@ -21,7 +20,7 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in", class: "btn btn-secondary" %>
+    <%= f.submit "Log in", class: "btn btn-secondary", data: { disable_with: "Please wait..." } %>
   </div>
 <% end %>
 

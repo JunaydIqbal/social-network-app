@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     :confirmations => "users/confirmations"
 
   }
+  
 
   devise_scope :users do 
     get 'signup', to: 'users/registrations#new'

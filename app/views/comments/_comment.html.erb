@@ -23,11 +23,12 @@
 
           <div class ="be-comment-text">
             <%= comment.body %>
-            
-            <div class = "text-right">
-              <%= link_to "Edit", edit_comment_path(comment), class: "btn" %>
-              <%= link_to "Delete", comment_path(comment), method: :delete, data: {confirm: "Are you sure?"}, class: "btn"%>
-            </div>
+            <% if can? :manage, comment%>
+              <div class = "text-right">
+                <%= link_to "Edit", edit_comment_path(comment), class: "btn" %>
+                <%= link_to "Delete", comment_path(comment), method: :delete, data: {confirm: "Are you sure?"}, class: "btn"%>
+              </div>
+            <%end%>
           
           </div>
       </div>
