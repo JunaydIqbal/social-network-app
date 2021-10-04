@@ -1,24 +1,3 @@
-# README
+# Social Network App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The app is like twitter app, to make a post with photos attach option, and create multiple threads, likes actions and threads. User can follow peoples and then shows the posts of those people which you can follow.
